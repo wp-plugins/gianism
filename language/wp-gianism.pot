@@ -1,0 +1,253 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gianism\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-12-21 17:39+0900\n"
+"PO-Revision-Date: 2011-12-21 17:39+0900\n"
+"Last-Translator: Takahashi Fumiki <info@takahashifumiki.com>\n"
+"Language-Team: Hametuha inc. <info@hametuha.co.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../WP_Gianism.php:172
+#, php-format
+msgid "Message to %s"
+msgstr ""
+
+#: ../WP_Gianism.php:187
+msgid "Delete"
+msgstr ""
+
+#: ../WP_Gianism.php:195
+#: ../WP_Gianism.php:311
+msgid "No message."
+msgstr ""
+
+#: ../WP_Gianism.php:230
+msgid "Option updated."
+msgstr ""
+
+#: ../WP_Gianism.php:232
+msgid "Option failed to update."
+msgstr ""
+
+#: ../WP_Gianism.php:242
+#: ../WP_Gianism.php:264
+msgid "External Service"
+msgstr ""
+
+#: ../WP_Gianism.php:309
+msgid "You really delete this message?"
+msgstr ""
+
+#: ../WP_Gianism.php:310
+msgid "You cannot delete this message."
+msgstr ""
+
+#: ../WP_Gianism.php:528
+msgid "Connect user accounts with major web services like Facebook, twitter, etc. Stand on the shoulders of giants!"
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:95
+#: ../sdks/facebook/facebook_controller.php:125
+#: ../sdks/facebook/facebook_controller.php:138
+#: ../sdks/google/google_controller.php:77
+msgid "Oops, Failed to Authenticate."
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:119
+#, php-format
+msgid "Welcome!, %s"
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:121
+#: ../sdks/google/google_controller.php:104
+#, php-format
+msgid "Mm...? This %s account seems to be connected to another account."
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:133
+#: ../sdks/google/google_controller.php:115
+#, php-format
+msgid "Disconected your %s account."
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:221
+#: ../sdks/google/google_controller.php:194
+msgid "Connect"
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:222
+#, php-format
+msgid "Connecting with Facebook account, you can log in %s via Facebook account."
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:229
+#: ../sdks/google/google_controller.php:186
+msgid "Disconnect"
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:231
+msgid "Your account is already connected with Facebook account."
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:232
+#: ../sdks/google/google_controller.php:189
+msgid "You really disconnect this account?"
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:237
+msgid "Facebook"
+msgstr ""
+
+#: ../sdks/facebook/facebook_controller.php:267
+msgid "Log in with Facebook"
+msgstr ""
+
+#: ../sdks/google/google_controller.php:102
+#, php-format
+msgid "Welcom, %s!"
+msgstr ""
+
+#: ../sdks/google/google_controller.php:188
+#, php-format
+msgid "Your account is already connected with Google &lt;%s&gt;."
+msgstr ""
+
+#: ../sdks/google/google_controller.php:195
+#, php-format
+msgid "Connecting %1$s account, you can log in %2$s via %1$s account."
+msgstr ""
+
+#: ../sdks/google/google_controller.php:200
+msgid "Google"
+msgstr ""
+
+#: ../sdks/google/google_controller.php:221
+msgid "Login with Google"
+msgstr ""
+
+#: ../sdks/twitter/twitter_controller.php:89
+#, php-format
+msgid "Welcome, @%s!"
+msgstr ""
+
+#: ../sdks/twitter/twitter_controller.php:107
+msgid "Disconnect now :("
+msgstr ""
+
+#: ../sdks/twitter/twitter_controller.php:180
+#, php-format
+msgid "Your account is already connected with Twitter <a target=\"_blank\" href=\"%1$s\">%2$s</a> ."
+msgstr ""
+
+#: ../sdks/twitter/twitter_controller.php:184
+#, php-format
+msgid "Your e-mail address is pseudo &quot;%1$s&quot; and cannot be sent a mail for. If you disconnect twitter account, you may not be able to log in %2$s. Please change it to available e-mail address."
+msgstr ""
+
+#: ../sdks/twitter/twitter_controller.php:200
+msgid "Twitter"
+msgstr ""
+
+#: ../sdks/twitter/twitter_controller.php:226
+msgid "Login with Twitter"
+msgstr ""
+
+#: ../sdks/twitter/twitter_controller.php:350
+#, php-format
+msgid "You have message \"%1$s\" on %2$s. %3$s"
+msgstr ""
+
+#: ../templates/setting.php:11
+msgid "Connect with Facebook"
+msgstr ""
+
+#: ../templates/setting.php:15
+#: ../templates/setting.php:62
+#: ../templates/setting.php:100
+msgid "Enable"
+msgstr ""
+
+#: ../templates/setting.php:19
+#: ../templates/setting.php:66
+#: ../templates/setting.php:104
+msgid "Disable"
+msgstr ""
+
+#: ../templates/setting.php:22
+#: ../templates/setting.php:69
+#: ../templates/setting.php:107
+#, php-format
+msgid "You have to create %1$s App <a target=\"_blank\" href=\"%2$s\">here</a> to get required infomation."
+msgstr ""
+
+#: ../templates/setting.php:27
+msgid "App ID"
+msgstr ""
+
+#: ../templates/setting.php:33
+msgid "App Secret"
+msgstr ""
+
+#: ../templates/setting.php:39
+msgid "Facebook Fan Gate"
+msgstr ""
+
+#: ../templates/setting.php:42
+msgid "No Fan Gate"
+msgstr ""
+
+#: ../templates/setting.php:48
+#, php-format
+msgid "If you have fan page and use WordPress page as it, specify it here. Some functions are available. For details, see <strong>%s</strong>"
+msgstr ""
+
+#: ../templates/setting.php:58
+#: ../templates/setting.php:96
+#, php-format
+msgid "Connect with %s"
+msgstr ""
+
+#: ../templates/setting.php:75
+msgid "Consumer Key"
+msgstr ""
+
+#: ../templates/setting.php:79
+msgid "Consumer Secret"
+msgstr ""
+
+#: ../templates/setting.php:83
+msgid "Access Token"
+msgstr ""
+
+#: ../templates/setting.php:87
+msgid "Access token secret"
+msgstr ""
+
+#: ../templates/setting.php:113
+msgid "Client ID"
+msgstr ""
+
+#: ../templates/setting.php:117
+msgid "Client Secret"
+msgstr ""
+
+#: ../templates/setting.php:121
+#: ../templates/setting.php:125
+msgid "Redirect URI"
+msgstr ""
+
+#: ../templates/setting.php:125
+#, php-format
+msgid "Please set %1$s to %2$s on %3$s. If you use SSL on login, replace it's http with https."
+msgstr ""
+
