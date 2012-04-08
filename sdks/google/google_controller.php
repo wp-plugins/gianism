@@ -236,7 +236,9 @@ EOS;
 	 */
 	private function api(){
 		if(!$this->_oauth){
-			require_once dirname(__FILE__).DIRECTORY_SEPARATOR."apiClient.php";
+			if(!class_exists('apiClient')){
+				require_once dirname(__FILE__).DIRECTORY_SEPARATOR."apiClient.php";
+			}
 			$this->_oauth = new apiClient();
 			$this->_oauth->setClientId($this->consumer_key);
 			$this->_oauth->setClientSecret($this->consumer_secret);
@@ -248,7 +250,9 @@ EOS;
 				'https://www.googleapis.com/auth/userinfo.email',
 				'https://www.googleapis.com/auth/plus.me'
 			));
-			require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'contrib/apiPlusService.php';
+			if(!class_exists('apiPlusService')){
+				require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'contrib/apiPlusService.php';
+			}
 			$this->plus = new apiPlusService($this->_oauth);
 		}
 		return $this->_oauth;
@@ -283,10 +287,11 @@ EOS;
 		if(isset($_SESSION['_wpg_ggl_redirect']) && !empty($_SESSION['_wpg_ggl_redirect'])){
 			$url = (string)$_SESSION['_wpg_ggl_redirect'];
 			unset($_SESSION['_wpg_ggl_redirect']);
-			return $url;
+			$redirect = $url;
 		}else{
-			return null;
+			$redirect = null;
 		}
+		return apply_filter('gianism_redirect_to', $redirect);
 	}
 	
 	/**
