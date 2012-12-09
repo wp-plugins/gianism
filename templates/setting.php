@@ -1,10 +1,74 @@
-<?php do_action('admin_notice'); ?>
+<div class="wrap gianism-wrap">
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1&appId=264573556888294";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <?php /* @var $this WP_Gianism */ ?>
 <div id="icon-users" class="icon32"><br></div>
-<h2><?php $this->e('External Service'); ?></h2>
+
+<h2 class="nav-tab-wrapper">
+	<a class="nav-tab<?php if(!isset($_REQUEST['view'])) echo ' nav-tab-active'; ?>" href="<?php echo admin_url('users.php?page=gianism');?>">
+		<?php $this->e('External Service'); ?>
+	</a>
+	<?php
+		foreach(array(
+			'setup' => $this->_('How to set up'),
+			'customize' => $this->_('Customize'),
+			'advanced' => $this->_('Advanced Usage')
+		) as $key => $val):
+	?>
+	<a class="nav-tab<?php if(isset($_REQUEST['view']) && $_REQUEST['view'] == $key) echo ' nav-tab-active'; ?>" href="<?php echo admin_url('users.php?page=gianism&view='.$key);?>">
+		<?php echo $val; ?>
+	</a>
+	<?php endforeach; ?>
+</h2>
+
+<br class="clear" />
+
+<div class="sidebar">
+	<div id="index">
+		<h4><?php $this->e('Index'); ?></h4>
+		<ol>
+		</ol>
+		<p class="forum-link">
+			<?php $this->e('Have some questions? Go to <a href="http://wordpress.org/support/plugin/gianism">support forum</a> and create thread.'); ?>
+		</p>
+		<p class="amazon-link">
+			<?php printf($this->_('If you find this plugin usefull, don\'t hesitate to buy me some present from <a href="%s">my wishlist</a>.'), 'http://www.amazon.co.jp/registry/wishlist/29NJ4F9NRNIKB'); ?>
+		</p>
+		<div class="fb-like-box" data-href="https://www.facebook.com/TakahashiFumiki.Page" data-width="278" data-height="72" data-show-faces="false" data-stream="false" data-border-color="f9f9f9" data-header="false"></div>
+		<p class="social-link">
+			<a href="https://twitter.com/intent/tweet?screen_name=takahashifumiki" class="twitter-mention-button" data-lang="ja" data-related="takahashifumiki">Tweet to @takahashifumiki</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</p>
+	</div>
+</div>
+
+<div class="main-content">
+
+<?php
+	$view = isset($_REQUEST['view']) ? (string)$_REQUEST['view'] : '';
+	switch($view):
+		case 'setup':
+			require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'how-to-setup.php';
+			break;
+		case 'customize':
+			require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'customize.php';
+			break;
+		case 'advanced':
+			require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'advanced.php';
+			break;
+		default:
+?>
 <form method="post">
 	<?php $this->nonce_field('option'); ?>
-	<h3 style="clear: left;">Facebook</h3>
+	<h3>Facebook</h3>
 	<table class="form-table">
 		<tbody>
 			<tr>
@@ -20,6 +84,7 @@
 					</label>
 					<p class="description">
 						<?php printf($this->_('You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.'), "Facebook", "https://developers.facebook.com/apps"); ?>
+						<?php printf($this->_('See detail at <a href="%1$s">%2$s</a>.'), admin_url('users.php?page=gianism&view=setup'), $this->_('How to set up')); ?>
 					</p>
 				</td>
 			</tr>
@@ -45,7 +110,7 @@
 						<?php endwhile; endif; wp_reset_query();?>
 					</select>
 					<p class="description">
-						<?php printf($this->_('If you have fan page and use WordPress page as it, specify it here. Some functions are available. For details, see <strong>%s</strong>'), dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."functions.php"); ?>
+						<?php printf($this->_('If you have fan page and use WordPress page as it, specify it here. Some functions are available. For details, see <strong>%s</strong>'), sprintf('<a href="%s">%s</a>', admin_url('users.php?page=gianism&view=advanced'), $this->_('Advanced Usage'))); ?>
 					</p>
 				</td>
 			</tr>
@@ -67,6 +132,7 @@
 					</label>
 					<p class="description">
 						<?php printf($this->_('You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.'), "Twitter", "https://dev.twitter.com/apps"); ?>
+						<?php printf($this->_('See detail at <a href="%1$s">%2$s</a>.'), admin_url('users.php?page=gianism&view=setup'), $this->_('How to set up')); ?>
 					</p>
 				</td>
 			</tr>
@@ -110,6 +176,7 @@
 					</label>
 					<p class="description">
 						<?php printf($this->_('You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.'), "Google API Console", "https://code.google.com/apis/console"); ?>
+						<?php printf($this->_('See detail at <a href="%1$s">%2$s</a>.'), admin_url('users.php?page=gianism&view=setup'), $this->_('How to set up')); ?>
 					</p>
 				</td>
 			</tr>
@@ -133,7 +200,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<h3>Mixi</h3>
+	<h3>mixi</h3>
 	<table class="form-table">
 		<tbody>
 			<tr>
@@ -149,6 +216,7 @@
 					</label>
 					<p class="description">
 						<?php printf($this->_('You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.'), "mixi Graph API", "http://developer.mixi.co.jp/connect/mixi_graph_api/services/"); ?>
+						<?php printf($this->_('See detail at <a href="%1$s">%2$s</a>.'), admin_url('users.php?page=gianism&view=setup'), $this->_('How to set up')); ?>
 					</p>
 				</td>
 			</tr>
@@ -202,41 +270,13 @@
 	</table>
 	<?php submit_button(); ?>
 </form>
+<?php 
+			break;
+	endswitch;
+?>
 
-<hr />
+</div><!-- //.main-content -->
+	
+<br class="clear" />
 
-<h3><?php $this->e('Customizatin');?></h3>
-
-<h4><?php $this->e('Change Login Button'); ?></h4>
-<p class="description">
-	<?php $this->e('You can change the appearance of login button. Available hooks are below:'); ?>
-</p>
-<ol>
-	<li>gianism_link_facebook</li>
-	<li>gianism_link_twitter</li>
-	<li>gianism_link_google</li>
-</ol>
-<pre><code>//<?php $this->e('You can customize Facebook login button like this'); ?>
-
-function _my_login_link_facebook($markup, $link, $title){
-	return '&lt;a class="my_fb_link" href="'.$link.'"&gt;'.$title.'&lt;/a&gt;';
-}
-add_filter('_my_login_link_facebook', 10, 3);
-</code></pre>
-
-<h4><?php $this->e('Change Redirect'); ?></h4>
-
-<p class="description">
-	<?php $this->e('You can hook on redirect URL after user logged in.'); ?><br />
-	<?php $this->e('<strong>Note:</strong> Redirect occurs on various situations. If you are not enough aware of WordPress URL process, some troubles might occurs.'); ?>
-</p>
-
-<pre><code>function _my_redirect_to($url){
-	//<?php $this->e('Now you can get redirect URL.'); ?>
-
-	//<?php $this->e('Not specified, $url is null.'); ?>
-
-	return home_url();
-}
-add_filter('gianism_redirect_to', '_my_redirect_to');
-</code></pre>
+</div><!-- //.gianism-wrap -->
