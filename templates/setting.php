@@ -116,6 +116,7 @@
 			</tr>
 		</tbody>
 	</table>
+	
 	<h3>Twitter</h3>
 	<table class="form-table">
 		<tbody>
@@ -136,7 +137,6 @@
 					</p>
 				</td>
 			</tr>
-
 			<tr>
 				<th><label for="tw_screen_name"><?php $this->e('Screen Name'); ?></label></th>
 				<td><input class="regular-text" type="text" name="tw_screen_name" id="tw_screen_name" value="<?php echo $this->option['tw_screen_name']?>" /></td>
@@ -157,9 +157,10 @@
 				<th><label for="tw_access_token_secret"><?php $this->e('Access token secret'); ?></label></th>
 				<td><input class="regular-text" type="text" name="tw_access_token_secret" id="tw_access_token_secret" value="<?php echo $this->option['tw_access_token_secret']?>" /></td>
 			</tr>
-			
 		</tbody>
 	</table>
+	
+	
 	<h3>Google</h3>
 	<table class="form-table">
 		<tbody>
@@ -194,12 +195,60 @@
 				<td>
 					<input class="regular-text" type="text" name="ggl_redirect_uri" id="ggl_redirect_uri" value="<?php echo $this->option['ggl_redirect_uri']?>" />
 					<p class="description">
-						<?php printf($this->_('Please set %1$s to %2$s on %3$s. If you use SSL on login, replace it\'s http with https.'), $this->_('Redirect URI'), get_bloginfo('url'), "Google API Console"); ?>
+						<?php printf($this->_('Please set %1$s to %2$s on <a target="_blank" href="%4$s">%3$s</a>.'), $this->_('Redirect URI'), '<code>'.home_url('', ($this->is_ssl_required() ? 'https' : 'http')).'</code>', "Google API Console", 'https://code.google.com/apis/console'); ?>
 					</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+	
+	
+	
+	<h3>Yahoo! JAPAN</h3>
+	<table class="form-table">
+		<tbody>
+			<tr>
+				<th><label><?php printf($this->_('Connect with %s'), 'Yahoo! JAPAN');?></label>
+				<td>
+					<label>
+						<input type="radio" name="yahoo_enabled" value="1"<?php if($this->option['yahoo_enabled']) echo ' checked="checked"';?> />
+						<?php $this->e('Enable');?>
+					</label>
+					<label>
+						<input type="radio" name="yahoo_enabled" value="0"<?php if(!$this->option['yahoo_enabled']) echo ' checked="checked"';?> />
+						<?php $this->e('Disable');?>
+					</label>
+					<p class="description">
+						<?php printf($this->_('You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.'), "Yahoo! JAPAN", "https://e.developer.yahoo.co.jp/dashboard/"); ?>
+						<?php printf($this->_('See detail at <a href="%1$s">%2$s</a>.'), admin_url('users.php?page=gianism&view=setup'), $this->_('How to set up')); ?>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="yahoo_application_id"><?php $this->e('Application ID'); ?></label></th>
+				<td><input class="regular-text" type="text" name="yahoo_application_id" id="yahoo_application_id" value="<?php echo $this->option['yahoo_application_id']?>" /></td>
+			</tr>
+			<tr>
+				<th><label for="yahoo_consumer_secret"><?php $this->e('Client Secret'); ?></label></th>
+				<td><input class="regular-text" type="text" name="yahoo_consumer_secret" id="yahoo_consumer_secret" value="<?php echo $this->option['yahoo_consumer_secret']?>" /></td>
+			</tr>
+			<tr>
+				<th><label><?php $this->e('Callback URI'); ?></label></th>
+				<td>
+					<p class="description">
+						<?php
+							$end_point = home_url('/yconnect/', ($this->is_ssl_required() ? 'https' : 'http'));
+							printf($this->_('Please set %1$s to %2$s on <a target="_blank" href="%4$s">%3$s</a>.'), $this->_('Callback URI'), "<code>{$end_point}</code>", $this->_("Yahoo! JAPAN Developer Network"), 'https://e.developer.yahoo.co.jp/dashboard/');
+						?>
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+	
+	
 	<h3>mixi</h3>
 	<table class="form-table">
 		<tbody>
@@ -234,11 +283,8 @@
 				<td>
 					<p class="description">
 						<?php
-							$mixi_end_point = trailingslashit(get_bloginfo('url')).'mixi/';
-							if((defined('FORCE_SSL_LOGIN') && FORCE_SSL_LOGIN) || (defined('FORCE_SSL_ADMIN') && FORCE_SSL_ADMIN)){
-								$mixi_end_point = str_replace('http:', 'https:', $mixi_end_point);
-							}
-							printf($this->_('Please set %1$s to %2$s on %3$s.'), $this->_('Redirect URI'), "<code>{$mixi_end_point}</code>", "mixi Partner Dashboard");
+							$mixi_end_point = home_url('/mixi/', ($this->is_ssl_required() ? 'https' : 'http'));
+							printf($this->_('Please set %1$s to %2$s on <a target="_blank" href="%4$s">%3$s</a>.'), $this->_('Redirect URI'), "<code>{$mixi_end_point}</code>", "mixi Partner Dashboard", 'http://developer.mixi.co.jp');
 						?>
 					</p>
 				</td>
