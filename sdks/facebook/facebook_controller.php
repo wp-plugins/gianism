@@ -178,7 +178,7 @@ EOS;
 										if(isset($profile['username'])){
 											//if set, use username. but this is optional setting.
 											$user_name = $profile['username'];
-										}elseif(isset($profile['name']) && !username_exists($profile['name']) && preg_match("/^[a-ZA-Z0-9 ]+$/", $profile['name'])){
+										}elseif(isset($profile['name']) && !username_exists($profile['name']) && preg_match("/^[a-zA-Z0-9 ]+$/", $profile['name'])){
 											//If name is alpabetical, use it.
 											$user_name = $profile['name'];
 										}else{
@@ -220,10 +220,13 @@ EOS;
 						$this->message .= '\n'.$gianism->_('Cannot get Facebook ID.').$gianism->_('Please try again later.');
 					}
 					if($user_id && !is_wp_error($user_id)){
+						$this->message = '';
 						wp_set_auth_cookie($user_id, true);
 						if(isset($_GET['redirect_to'])){
 							header('Location: '.$_GET['redirect_to']);
 							die();
+						}else{
+							wp_set_current_user($user_id);
 						}
 					}
 				}
