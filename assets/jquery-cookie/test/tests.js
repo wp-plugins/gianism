@@ -209,8 +209,8 @@ test('undefined', function () {
 test('expires option as days from now', function () {
 	expect(1);
 	var sevenDaysFromNow = new Date();
-	sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 7);
-	strictEqual($.cookie('c', 'v', { expires: 7 }), 'c=v; expires=' + sevenDaysFromNow.toUTCString(),
+	sevenDaysFromNow.setDate(sevenDaysFromNow.getDate() + 21);
+	strictEqual($.cookie('c', 'v', { expires: 21 }), 'c=v; expires=' + sevenDaysFromNow.toUTCString(),
 		'should write the cookie string with expires');
 });
 
@@ -282,6 +282,11 @@ test('when sucessfully deleted', function () {
 	strictEqual($.removeCookie('c'), true, 'returns true');
 });
 
+test('when cookie does not exist', function () {
+	expect(1);
+	strictEqual($.removeCookie('c'), true, 'returns true');
+});
+
 test('when deletion failed', function () {
 	expect(1);
 	$.cookie('c', 'v');
@@ -297,11 +302,6 @@ test('when deletion failed', function () {
 	strictEqual($.removeCookie('c'), false, 'returns false');
 
 	$.cookie = originalCookie;
-});
-
-test('when cookie does not exist', function () {
-	expect(1);
-	strictEqual($.removeCookie('c'), false, 'returns false');
 });
 
 test('with options', function () {
