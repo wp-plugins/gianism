@@ -925,7 +925,6 @@ abstract class BaseFacebook
         $params[$key] = json_encode($value);
       }
     }
-
     return $this->makeRequest($url, $params);
   }
 
